@@ -5,6 +5,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { Button, Typography } from "@material-ui/core";
+import Box from '@material-ui/core/Box';
 
 class Details extends Component{
 
@@ -16,22 +17,10 @@ class Details extends Component{
 
     render(){
         return(
-            <div>
+            <Box my={35}>
                 Hello!
-            </div>
+            </Box>
 
-            // <Dialog >
-            //     <DialogTitle>Subscribe</DialogTitle>
-            //     <DialogContent>
-            //         <DialogContentText>
-            //             <Typography>Hello From Details</Typography>
-            //         </DialogContentText>
-            //     </DialogContent>
-            //     <DialogActions>
-            //         <Button color="primary">Cancel</Button>
-            //         <Button color="primary">Subscribe</Button>
-            //     </DialogActions>
-            // </Dialog>
         ) //return
     } //render
 } //class

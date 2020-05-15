@@ -12,8 +12,8 @@ class App extends Component {
       <div className="App">
         <HashRouter>
           <Route exact path='/' component={MovieList}/>
-          <Route path='/movieItem' component={MovieItem}/>
-          <Route path='/details' component={Details}/>
+          <Route path='/movieItem' render={(props) =><MovieItem {...props}/>}/>
+          <Route path='/details' render={(props) => <Details {...props} />}/>
         </HashRouter>
       </div>
     );
