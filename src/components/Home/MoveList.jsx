@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import MovieItem from "./MovieItem";
 
 class MovieList extends Component{
 
@@ -8,11 +9,12 @@ class MovieList extends Component{
     }
 
     render(){
-        console.log(this.props.reduxState.movies);
+        // console.log(this.props.reduxState.movies);
         
         return(
             <div>
                 <h2>Movie List</h2>
+                {this.props.reduxState.movies.map(movie => <MovieItem key={movie.id} movie={movie} />)}
             </div>
         ) //return
     } //render

@@ -22,3 +22,13 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.card{
+  width: 200px;
+  display: inline-block;
+  margin: 2%;
+}
+
+.card img{
+  width: 200px;
+}
