@@ -4,17 +4,19 @@ import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import { Typography } from "@material-ui/core";
-import GridListTile from '@material-ui/core/GridListTile';
+
+
 
 import Details from '../Details/Details';
 
 class MovieItem extends Component{
 
     handleClick = () =>{
-        
+        this.props.history.push('/details');
     }
     
     render(){
+
         console.log(this.props.movie.poster);
         return(
                 <Card className='card' onClick={this.handleClick}>
