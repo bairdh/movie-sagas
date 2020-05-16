@@ -36,3 +36,14 @@
 a{
   text-decoration: none;
 }
+
+.divider{
+  color: red;
+}
+
+.detailsBox{
+  margin: auto;
+  width: 70%;
+  min-width: 450px;
+  max-width: 700px;
+}

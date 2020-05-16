@@ -54,7 +54,14 @@ const movies = (state = [], action) => {
     }
 }
 
-const oneMovie = (state = {}, action) => {
+const initMovie = {
+    id: 0,
+    title: '',
+    poster: '',
+    description: '',
+    genres: []
+};
+const oneMovie = (state = initMovie, action) => {
     switch (action.type){
         case 'movie':
             let genres = [];
@@ -64,7 +71,7 @@ const oneMovie = (state = {}, action) => {
                 title: action.payload[0].title,
                 poster: action.payload[0].poster,
                 description: action.payload[0].description,
-                genre: genres
+                genres: genres
             }            
             return state;
         default:
