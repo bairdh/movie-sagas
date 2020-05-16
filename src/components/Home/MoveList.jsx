@@ -15,7 +15,7 @@ class MovieList extends Component{
         return(
             <Box>
                 <h2>Movie List</h2>
-                {this.props.reduxState.movies.map(movie => <MovieItem key={movie.id} movie={movie} />)}
+                {this.props.reduxState.movies.map(movie => <MovieItem key={movie.id} movie={movie} dispatch={this.props.dispatch}/>)}
             </Box>
         ) //return
     } //render

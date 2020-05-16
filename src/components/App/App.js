@@ -13,7 +13,7 @@ class App extends Component {
         <HashRouter>
           <Route exact path='/' component={MovieList}/>
           <Route path='/movieItem' render={(props) =><MovieItem {...props}/>}/>
-          <Route path='/details' render={(props) => <Details {...props} />}/>
+          <Route path='/details/:id' render={(props) => <Details {...props} />}/>
         </HashRouter>
       </div>
     );
