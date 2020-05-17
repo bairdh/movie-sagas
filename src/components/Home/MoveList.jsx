@@ -13,7 +13,7 @@ class MovieList extends Component{
         // console.log(this.props.reduxState.movies);
         
         return(
-            <Box>
+            <Box m={4}>
                 <h2>Movie List</h2>
                 {this.props.reduxState.movies.map(movie => <MovieItem key={movie.id} movie={movie} dispatch={this.props.dispatch}/>)}
             </Box>

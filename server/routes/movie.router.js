@@ -4,7 +4,10 @@ const pool = require('../modules/pool');
 
 
 router.get('/', (req,res) => {
-    let query = `SELECT * FROM movies`
+    let query = `
+    SELECT * 
+    FROM movies
+    ORDER BY id `
     pool.query(query).then(result => {
         res.send(result.rows);
     }).catch(err => {
@@ -25,7 +28,7 @@ router.get(`/:id`, (req, res) => {
     WHERE m.id = $1;`
 
     pool.query(query, [id]).then(result =>{
-        console.log(result.rows);
+        // console.log(result.rows);
         
         res.send(result.rows)
     }).catch(err =>{
@@ -34,6 +37,23 @@ router.get(`/:id`, (req, res) => {
     })
 })
 
+router.put('/update', (req, res) =>{
+    let id = req.body.id;
+    let title = req.body.title;
+    let des =req.body.description;
+    const query = `
+    UPDATE movies
+    SET title = $1,
+    description = $2
+    WHERE id = $3;`;
+    console.log(id, title, des);
+    pool.query(query, [title, des, id]).then(result => {
+        res.sendStatus(200);
+    }).catch(err => {
+        console.log(err);
+        res.sendStatus(500);
+    })
 
+})
 
 module.exports = router;
