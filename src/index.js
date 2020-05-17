@@ -23,7 +23,7 @@ function* rootSaga() {
     yield takeEvery('ADD_GENRE_TO_MOVIE', addGenreToMovie);
     yield takeEvery('DELETE_GENRE_FROM_MOVIE', deleteGenreFromMovie);
     yield takeEvery('SEARCH_MOVIES', searchMovies);
-    yield takeEvery('')
+    yield takeEvery('VERIFICATION' verification);
 }
 
 function* fetchMovieList(action){
@@ -88,6 +88,14 @@ function* searchMovies(action){
         yield put({type:'SET_MOVIES', payload: res.data});
     }catch(err){
         console.log(err);
+    }
+}
+
+function* search(action){
+    try{
+
+    }catch(err){
+        
     }
 }
 
