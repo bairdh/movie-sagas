@@ -18,8 +18,6 @@ class MovieItem extends Component{
     }
     
     render(){
-
-        // console.log(this.props.movie.id);
         return(
                 <Card className='card' >
                     <CardMedia 

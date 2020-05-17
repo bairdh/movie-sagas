@@ -1,3 +1,9 @@
+body{
+  background-image: url('https://images.unsplash.com/photo-1558544109-58992f348795?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=60');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 .App {
   text-align: center;
 }
@@ -46,4 +52,8 @@ a{
   width: 70%;
   min-width: 450px;
   max-width: 700px;
+}
+
+.genreInput{
+  margin-right: 2% !important;
 }

@@ -19,7 +19,7 @@ router.get('/', (req,res) => {
 router.get(`/:id`, (req, res) => {
     let id = req.params.id
     let query = `
-    SELECT m.id, m.title, m.poster, m.description, g.name
+    SELECT m.id, m.title, m.poster, m.description, g.name, g.id AS genre_id
     FROM movies AS m
     JOIN movie_genre AS mg
         ON m.id = mg.movies_id

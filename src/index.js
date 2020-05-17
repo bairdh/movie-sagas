@@ -18,7 +18,9 @@ import axios from 'axios';
 function* rootSaga() {
     yield takeEvery('FETCH_MOVIELIST', fetchMovieList);
     yield takeEvery('GET_MOVIE_INFO', getMovieInfo);
-    yield takeEvery('UPDATE_MOVIE', updateMovie)
+    yield takeEvery('UPDATE_MOVIE', updateMovie);
+    yield takeEvery('FETCH_GENRES', fetchGenres);
+    yield takeEvery('ADD_GENRE_TO_MOVIE', addGenreToMovie);
 
 }
 
@@ -51,6 +53,24 @@ function* updateMovie(action){
     }
 }
 
+function* fetchGenres(action){
+    try{
+        const res = yield axios.get('/genre');
+        yield put({type: 'SET_GENRES', payload:res.data});
+    }catch(err){
+        console.log(err); 
+    }
+}
+
+function* addGenreToMovie(action){
+    try{
+        const res = yield axios.post('/movie-genre', action.payload);
+        yield put({ type:"GET_MOVIE_INFO", payload: action.payload.movie_id});
+    }catch(err){
+        console.log(err);
+    }
+}
+
 // Create sagaMiddleware
 const sagaMiddleware = createSagaMiddleware();
 
@@ -69,13 +89,13 @@ const initMovie = {
     title: '',
     poster: '',
     description: '',
-    genres: []
+    genres: [],
 };
 const oneMovie = (state = initMovie, action) => {
     switch (action.type){
         case 'movie':
             let genres = [];
-            action.payload.map(genre => genres.push(genre.name))
+            action.payload.map(genre => genres.push({ name: genre.name, id: genre.genre_id}))
             state = {
                 id: action.payload[0].id,
                 title: action.payload[0].title,
