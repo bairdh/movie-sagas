@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { Button, Typography, TextField, Input, MenuItem } from "@material-ui/core";
 import Box from '@material-ui/core/Box';
 import { HashRouter, Link } from "react-router-dom";
+import swal from "sweetalert";
 
 
 class Details extends Component{
@@ -67,8 +68,24 @@ class Details extends Component{
     }
 
     removeGenre = (event, prop) => {
-        console.log(prop);
-        
+        swal({
+            title: 'Would you like to delete this genre?',
+            text: 'Deleting it will remove it from this movie.',
+            icon: 'warning',
+            buttons: true,
+            dangerMode: true
+        }).then(willDelete => {
+            if(willDelete){
+                this.props.dispatch({type: 'DELETE_GENRE_FROM_MOVIE', payload:{movie_id: this.props.reduxState.oneMovie.id, genre_id:prop}})
+                swal({
+                    title: 'Genre Removed',
+                    icon: 'success'
+                })
+            }
+            else{
+                return;
+            }
+        })
     }
 
     render(){
@@ -114,8 +131,7 @@ class Details extends Component{
                     color="secondary"
                     placeholder="Genre"
                     width="100px"
-                    defaultValue={0}
-                > 
+                    defaultValue={0}> 
                     {this.props.reduxState.genres.map(genre =>(
                        <MenuItem key={genre.name} value={genre.id}>
                             {genre.name}

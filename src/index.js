@@ -21,7 +21,7 @@ function* rootSaga() {
     yield takeEvery('UPDATE_MOVIE', updateMovie);
     yield takeEvery('FETCH_GENRES', fetchGenres);
     yield takeEvery('ADD_GENRE_TO_MOVIE', addGenreToMovie);
-
+    yield takeEvery('DELETE_GENRE_FROM_MOVIE', deleteGenreFromMovie);
 }
 
 function* fetchMovieList(action){
@@ -66,6 +66,15 @@ function* addGenreToMovie(action){
     try{
         const res = yield axios.post('/movie-genre', action.payload);
         yield put({ type:"GET_MOVIE_INFO", payload: action.payload.movie_id});
+    }catch(err){
+        console.log(err);
+    }
+}
+
+function* deleteGenreFromMovie(action){
+    try{
+        const res = yield axios.delete(`/movie-genre/${action.payload.movie_id}/${action.payload.genre_id}`);
+        yield put({ type:"GET_MOVIE_INFO", payload: action.payload.movie_id });
     }catch(err){
         console.log(err);
     }
