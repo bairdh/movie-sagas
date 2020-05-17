@@ -70,7 +70,6 @@ router.get('/search/:search', (req, res) =>{
     }).catch(err =>{
         console.log(err);
         res.sendStatus(500);
-        
     })
 })
 

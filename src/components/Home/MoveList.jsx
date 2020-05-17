@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import MovieItem from "./MovieItem";
 import { Box, TextField, Button } from "@material-ui/core";
+import { Link } from "react-router-dom";
 
 class MovieList extends Component{
 
@@ -28,6 +29,7 @@ class MovieList extends Component{
         
         return(
             <Box m={4}>
+                <Link to="/adminLogin"><Button>Admin Login</Button></Link>
                 <h2>Movie List</h2>
                 <Box>
                     <TextField 
