@@ -22,6 +22,7 @@ function* rootSaga() {
     yield takeEvery('FETCH_GENRES', fetchGenres);
     yield takeEvery('ADD_GENRE_TO_MOVIE', addGenreToMovie);
     yield takeEvery('DELETE_GENRE_FROM_MOVIE', deleteGenreFromMovie);
+    yield takeEvery('SEARCH_MOVIES', searchMovies);
 }
 
 function* fetchMovieList(action){
@@ -80,8 +81,22 @@ function* deleteGenreFromMovie(action){
     }
 }
 
+function* searchMovies(action){
+    try{
+        const res = yield axios.get(`/movie/search/${action.payload}`);
+        yield put({type:'SET_MOVIES', payload: res.data});
+    }catch(err){
+        console.log(err);
+    }
+}
+
 // Create sagaMiddleware
 const sagaMiddleware = createSagaMiddleware();
+
+// ===================
+//      REDUCERS
+// ===================
+
 
 // Used to store movies returned from the server
 const movies = (state = [], action) => {

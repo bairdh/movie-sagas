@@ -7,7 +7,8 @@ router.get('/', (req,res) => {
     let query = `
     SELECT * 
     FROM movies
-    ORDER BY id `
+    ORDER BY id
+    LIMIT 10;`
     pool.query(query).then(result => {
         res.send(result.rows);
     }).catch(err => {
@@ -54,6 +55,23 @@ router.put('/update', (req, res) =>{
         res.sendStatus(500);
     })
 
+})
+
+router.get('/search/:search', (req, res) =>{
+    let search = req.params.search
+    let query = `
+    SELECT * 
+    FROM movies
+    WHERE LOWER(title) = LOWER($1)
+    LIMIT 10;`
+
+    pool.query(query, [search]).then(result =>{
+        res.send(result.rows)
+    }).catch(err =>{
+        console.log(err);
+        res.sendStatus(500);
+        
+    })
 })
 
 module.exports = router;
