@@ -23,7 +23,7 @@ function* rootSaga() {
     yield takeEvery('ADD_GENRE_TO_MOVIE', addGenreToMovie);
     yield takeEvery('DELETE_GENRE_FROM_MOVIE', deleteGenreFromMovie);
     yield takeEvery('SEARCH_MOVIES', searchMovies);
-    yield takeEvery('VERIFICATION' verification);
+    yield takeEvery('VERIFICATION', verification);
 }
 
 function* fetchMovieList(action){
@@ -91,7 +91,7 @@ function* searchMovies(action){
     }
 }
 
-function* search(action){
+function* verification(action){
     try{
 
     }catch(err){
